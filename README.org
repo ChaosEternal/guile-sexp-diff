@@ -1,0 +1,42 @@
+* SEXP-DIFF
+ "sexp-diff" computes a diff between two s-expressions which minimizes
+ the number of atoms in the result tree, also counting edit
+ conditionals #:new, #:old.
+
+* Examples:
+  Also see "tests/sexp-diff-test-suite.scm"
+  The code: 
+  #+BEGIN_SRC
+ (sexp-diff
+    '(DEFUN F (X) (+ (* X 2) 1))
+    '(DEFUN F (X) (- (* X 2) 3 1)))
+  #+END_SRC
+  should return
+  #+BEGIN_SRC
+ ((DEFUN F (X) (#:new - #:old + (* X 2) #:new 3 1)))
+  #+END_SRC
+
+  #+BEGIN_SRC
+ (sexp-diff
+    '(DEFUN F (X) (+ (* X 2) 4 1))
+    '(DEFUN F (X) (- (* X 2) 5 3 1)))
+  #+END_SRC
+  should return
+  #+BEGIN_SRC
+ ((DEFUN F (X) (#:new - #:old + (* X 2) #:new 5 #:new 3 #:old 4 1)))
+  #+END_SRC
+  
+  #+BEGIN_SRC
+ (sexp-diff
+    '(DEFUN F (X) (+ (* X 2) 4 4 1))
+    '(DEFUN F (X) (- (* X 2) 5 5 3 1)))
+  #+END_SRC
+  should return
+  #+BEGIN_SRC
+ ((DEFUN F (X) #:new (- (* X 2) 5 5 3 1) #:old (+ (* X 2) 4 4 1)))
+  #+END_SRC
+
+* Licenses
+
+  Ported from chicken/sexp-diff.scm
+  The sexp-diff/diff.scm is public domain, the test-suite is LGPL.
