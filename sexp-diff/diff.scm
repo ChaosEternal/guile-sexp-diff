@@ -67,8 +67,8 @@
 ;; Computes the number of atoms contained in TREE.
 (define (tree-size tree)
   (if (pair? tree)
-        (apply + 1 (map tree-size tree))
-	      1))
+      (apply + 1 (map tree-size tree))
+      1))
 
 ;; edit-record
 ;;  type: 'unchanged | 'deletion | 'insertion | 'update | 'compound
