@@ -1,0 +1,5 @@
+#!/usr/bin/guile 
+-L .
+!#
+(use-modules (test-suite lib)
+	     (tests sexp-diff-test-suite))
