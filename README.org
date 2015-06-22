@@ -5,6 +5,8 @@
 
 * Examples:
   Also see "tests/sexp-diff-test-suite.scm"
+
+
   The code: 
   #+BEGIN_SRC
  (sexp-diff
@@ -16,6 +18,7 @@
  ((DEFUN F (X) (#:new - #:old + (* X 2) #:new 3 1)))
   #+END_SRC
 
+  The code:
   #+BEGIN_SRC
  (sexp-diff
     '(DEFUN F (X) (+ (* X 2) 4 1))
@@ -26,6 +29,7 @@
  ((DEFUN F (X) (#:new - #:old + (* X 2) #:new 5 #:new 3 #:old 4 1)))
   #+END_SRC
   
+  The code:
   #+BEGIN_SRC
  (sexp-diff
     '(DEFUN F (X) (+ (* X 2) 4 4 1))
@@ -37,6 +41,6 @@
   #+END_SRC
 
 * Licenses
-
   Ported from chicken/sexp-diff.scm
-  The sexp-diff/diff.scm is public domain, the test-suite is LGPL.
+  
+  The sexp-diff/diff.scm is public domain, others are LGPL.

@@ -49,20 +49,10 @@
 (define-module (sexp-diff diff)
   #:use-module (srfi srfi-1)
   #:use-module (srfi srfi-9)
+  #:use-module (sexp-diff help-syntaxes)
   #:export (sexp-diff))
 
 
-(define-syntax add1
-  (lambda (x)
-    (syntax-case x ()
-      ((_ exp)
-       (syntax (+ exp 1))))))
-
-(define-syntax sub1
-  (lambda (x)
-    (syntax-case x ()
-      ((_ exp)
-       (syntax (- exp 1))))))
 
 ;; Computes the number of atoms contained in TREE.
 (define (tree-size tree)
